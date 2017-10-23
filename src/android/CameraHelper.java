@@ -83,6 +83,7 @@ class CameraHelper {
         if (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
             orientation = (cameraRotationOffset + degrees) % 360;
             orientation = (360 - orientation) % 360;
+            orientation *= -1; // testing a fix for flipped videos
         } else {
             orientation = (cameraRotationOffset - degrees + 360) % 360;
         }
