@@ -64,26 +64,47 @@ class CameraHelper {
         int currentScreenRotation = activity.getWindowManager().getDefaultDisplay().getRotation();
 
         int degrees = 0;
-        switch (currentScreenRotation) {
-            case Surface.ROTATION_0:
-                degrees = 0;
-                break;
-            case Surface.ROTATION_90:
-                degrees = 90;
-                break;
-            case Surface.ROTATION_180:
-                degrees = 180;
-                break;
-            case Surface.ROTATION_270:
-                degrees = 270;
-                break;
+
+        if (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT){
+            // Hack to account for reversed selfie camera
+            switch (currentScreenRotation) {
+                case Surface.ROTATION_0:
+                    degrees = 0;
+                    break;
+                case Surface.ROTATION_90:
+                    degrees = 270;
+                    break;
+                case Surface.ROTATION_180:
+                    degrees = 180;
+                    break;
+                case Surface.ROTATION_270:
+                    degrees = 90;
+                    break;
+            }
+
+        } else {
+            switch (currentScreenRotation) {
+                case Surface.ROTATION_0:
+                    degrees = 0;
+                    break;
+                case Surface.ROTATION_90:
+                    degrees = 90;
+                    break;
+                case Surface.ROTATION_180:
+                    degrees = 180;
+                    break;
+                case Surface.ROTATION_270:
+                    degrees = 270;
+                    break;
+            }
         }
+        
 
         int orientation;
         if (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
             orientation = (cameraRotationOffset + degrees) % 360;
             orientation = (360 - orientation) % 360;
-            orientation *= -1; // testing a fix for flipped videos
+            //orientation *= -1; // testing a fix for flipped videos
         } else {
             orientation = (cameraRotationOffset - degrees + 360) % 360;
         }
