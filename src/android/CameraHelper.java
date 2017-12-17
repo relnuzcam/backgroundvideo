@@ -53,12 +53,12 @@ class CameraHelper {
         return large;
     }
 
-    static Camera.Size getSevenTwentyP(Camera.Parameters cp){
+    /*static Camera.Size getSevenTwentyP(Camera.Parameters cp){
         // This should return a recording resolution that is as close to 720p as possible, while
         // still matching the aspect ratio of the screen
 
 
-        /*List<Camera.Size> sl = cp.getSupportedVideoSizes();
+        List<Camera.Size> sl = cp.getSupportedVideoSizes();
         Camera.Size screenSize;
         DisplayMetrics dm = new DisplayMetrics();
         activity.getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -79,9 +79,9 @@ class CameraHelper {
         for (Camera.Size s : sl){
             //if ()
         }
-*/
-    }
 
+    }
+*/
     static int getCameraId(int position) {
         // Find the total number of cameras available
         int mNumberOfCameras = Camera.getNumberOfCameras();
