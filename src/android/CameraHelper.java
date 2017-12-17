@@ -77,7 +77,7 @@ class CameraHelper {
 
 
         for (Camera.Size s : sl){
-            if ()
+            //if ()
         }
 
     }
