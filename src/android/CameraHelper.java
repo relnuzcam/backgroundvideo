@@ -58,7 +58,7 @@ class CameraHelper {
         // still matching the aspect ratio of the screen
 
 
-        List<Camera.Size> sl = cp.getSupportedVideoSizes();
+        /*List<Camera.Size> sl = cp.getSupportedVideoSizes();
         Camera.Size screenSize;
         DisplayMetrics dm = new DisplayMetrics();
         activity.getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -79,7 +79,7 @@ class CameraHelper {
         for (Camera.Size s : sl){
             //if ()
         }
-
+*/
     }
 
     static int getCameraId(int position) {
