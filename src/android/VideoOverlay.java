@@ -91,15 +91,15 @@ public class VideoOverlay extends ViewGroup implements TextureView.SurfaceTextur
             mRecorder.setCamera(mCamera);
 
             CamcorderProfile profile;
-            if (CamcorderProfile.hasProfile(mCameraId, CamcorderProfile.QUALITY_LOW)) {
-                profile = CamcorderProfile.get(mCameraId, CamcorderProfile.QUALITY_LOW);
-            } else {
+            if (CamcorderProfile.hasProfile(mCameraId, CamcorderProfile.QUALITY_HIGH)) {
                 profile = CamcorderProfile.get(mCameraId, CamcorderProfile.QUALITY_HIGH);
+            } else {
+                profile = CamcorderProfile.get(mCameraId, CamcorderProfile.QUALITY_LOW);
             }
 
-            Camera.Size lowestRes = CameraHelper.getLowestResolution(cameraParameters);
-            profile.videoFrameWidth = lowestRes.width;
-            profile.videoFrameHeight = lowestRes.height;
+            //Camera.Size lowestRes = CameraHelper.getLowestResolution(cameraParameters);
+            //profile.videoFrameWidth = lowestRes.width;
+            //profile.videoFrameHeight = lowestRes.height;
 
             mRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
             if (mRecordAudio) {
