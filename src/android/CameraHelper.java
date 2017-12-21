@@ -64,7 +64,7 @@ class CameraHelper {
         activity.getWindowManager().getDefaultDisplay().getMetrics(dm);
 
         int screenHeight = dm.heightPixels;
-        int screenWidth = db.widthPixels;
+        int screenWidth = dm.widthPixels;
 
         double screenRatio = screenHeight/screenWidth;
         double sizeRatio = 0.0;
