@@ -53,7 +53,7 @@ class CameraHelper {
         return large;
     }
 
-    static Camera.Size getSevenTwentyP(Camera.Parameters cp){
+    static Camera.Size getSevenTwentyP(Activity activity, Camera.Parameters cp){
         // This should return a recording resolution that is as close to 720p as possible, while
         // still matching the aspect ratio of the screen
 

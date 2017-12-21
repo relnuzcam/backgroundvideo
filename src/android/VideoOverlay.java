@@ -97,7 +97,7 @@ public class VideoOverlay extends ViewGroup implements TextureView.SurfaceTextur
                 profile = CamcorderProfile.get(mCameraId, CamcorderProfile.QUALITY_LOW);
             }
 
-            Camera.Size sevenTwentyP = CameraHelper.getSevenTwentyP(cameraParameters);
+            Camera.Size sevenTwentyP = CameraHelper.getSevenTwentyP((Activity) this.getContext(), cameraParameters);
             profile.videoFrameWidth = sevenTwentyP.width;
             profile.videoFrameHeight = sevenTwentyP.height;
 
