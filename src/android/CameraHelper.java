@@ -67,7 +67,7 @@ class CameraHelper {
         int screenWidth = db.widthPixels;
 
         double screenRatio = screenHeight/screenWidth;
-        double sizeRation = 0.0;
+        double sizeRatio = 0.0;
 
         if (sl == null){
             sl = cp.getSupportedPictureSizes();
