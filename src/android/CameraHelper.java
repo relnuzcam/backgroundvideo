@@ -84,7 +84,7 @@ class CameraHelper {
             sb.append(s.width);
             sb.append(" h ");
             sb.append(s.height);
-            Log.d(TAG, )
+            Log.d(TAG, sb.toString());
             sizeRatio = s.height/s.width;
             if(s.width == 720){
                 newRatioDiff = Math.abs(screenRatio - sizeRatio);
