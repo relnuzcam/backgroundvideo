@@ -74,18 +74,17 @@ class CameraHelper {
         }
 
         Camera.Size finalSize = sl.get(0);
-        
-
+        double ratioDiff = 0.0;
+        double newRatioDiff = 0.0;
 
         for (Camera.Size s : sl){
             sizeRatio = s.height/s.width;
-            if (sizeRatio != screenRatio){
-                continue;
-            }
             if(s.width == 720){
-                finalSize = s;
+                newRatioDiff = Math.abs(screenRatio - sizeRatio);
+                if(newRatioDiff < ratioDiff || ratioDiff == 0.0){
+                    finalSize = s;
+                }
             }
-
         }
 
         return finalSize;
