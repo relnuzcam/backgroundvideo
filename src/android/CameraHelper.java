@@ -86,7 +86,7 @@ class CameraHelper {
             sb.append(s.height);
             Log.d(TAG, sb.toString());
             sizeRatio = s.height/s.width;
-            if(s.width <= 1024){
+            if(s.width < 1024){
                 newRatioDiff = Math.abs(screenRatio - sizeRatio);
                 // ideally this gives us the largest size and the closest aspect ratio to the screen
                 if(s.height >= finalSize.height || ratioDiff == 0.0){
