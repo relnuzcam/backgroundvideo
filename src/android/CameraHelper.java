@@ -92,6 +92,7 @@ class CameraHelper {
                 if(s.height >= finalSize.height || ratioDiff == 0.0){
                     if(newRatioDiff < ratioDiff || ratioDiff == 0.0){
                         finalSize = s;
+                        ratioDiff = newRatioDiff;
                     }
                 }
             }
