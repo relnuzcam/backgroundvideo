@@ -80,13 +80,13 @@ class CameraHelper {
         double newRatioDiff = 0.0;
 
         for (Camera.Size s : sl){
-            StringBuilder sb = new StringBuilder("camera size: w ");
-            sb.append(s.width);
-            sb.append(" h ");
-            sb.append(s.height);
-            Log.d(TAG, sb.toString());
+            //StringBuilder sb = new StringBuilder("camera size: w ");
+            //sb.append(s.width);
+            //sb.append(" h ");
+            //sb.append(s.height);
+            //Log.d(TAG, sb.toString());
             sizeRatio = s.height/s.width;
-            if(s.width == 720){
+            if(s.width == 1280){
                 newRatioDiff = Math.abs(screenRatio - sizeRatio);
                 if(newRatioDiff < ratioDiff || ratioDiff == 0.0){
                     finalSize = s;
