@@ -99,7 +99,7 @@ public class VideoOverlay extends ViewGroup implements TextureView.SurfaceTextur
 
             Camera.Size sevenTwentyP = CameraHelper.getSevenTwentyP((Activity) this.getContext(), cameraParameters);
             StringBuilder sb = new StringBuilder("Camera Dimensions: w ");
-            sb.append(sevenTwentP.width);
+            sb.append(sevenTwentyP.width);
             sb.append(" h ");
             sb.append(sevenTwentyP.height);
 
