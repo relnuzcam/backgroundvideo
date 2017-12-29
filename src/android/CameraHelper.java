@@ -3,12 +3,14 @@ package io.iclue.backgroundvideo;
 import android.app.Activity;
 import android.hardware.Camera;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Surface;
 
 import java.util.List;
 
 @SuppressWarnings("deprecation")
 class CameraHelper {
+    private static final String TAG = "BACKGROUND_VIDEO_CAMERA_HELPER";
     static final int NO_CAMERA = -101;
 
     static Camera.Size getPreviewSize(Camera.Parameters cp) {
@@ -78,6 +80,11 @@ class CameraHelper {
         double newRatioDiff = 0.0;
 
         for (Camera.Size s : sl){
+            StringBuilder sb = new StringBuilder("camera size: w ");
+            sb.append(s.width);
+            sb.append(" h ");
+            sb.append(s.height);
+            Log.d(TAG, )
             sizeRatio = s.height/s.width;
             if(s.width == 720){
                 newRatioDiff = Math.abs(screenRatio - sizeRatio);
