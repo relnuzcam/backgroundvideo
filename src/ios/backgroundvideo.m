@@ -45,7 +45,7 @@
     self.parentView.backgroundColor = [UIColor clearColor];
     self.view = [[UIView alloc] initWithFrame: self.parentView.bounds];
     [self.parentView addSubview: view];
-    view.alpha = 0.2f;
+    view.alpha = 0.65f;
     self.parentView.userInteractionEnabled = NO;
 
     //camera stuff
