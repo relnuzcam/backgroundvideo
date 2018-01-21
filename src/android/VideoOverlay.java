@@ -91,33 +91,47 @@ public class VideoOverlay extends ViewGroup implements TextureView.SurfaceTextur
             mRecorder.setCamera(mCamera);
 
             CamcorderProfile profile;
-            if (CamcorderProfile.hasProfile(mCameraId, CamcorderProfile.QUALITY_480P)) {
+            if (CamcorderProfile.hasProfile(mCameraId, CamcorderProfile.QUALITY_720P)){
+                profile = CamcorderProfile.get(mCameraId, CamcorderProfile.QUALITY_720P);
+            } else if (CamcorderProfile.hasProfile(mCameraId, CamcorderProfile.QUALITY_480P)) {
                 profile = CamcorderProfile.get(mCameraId, CamcorderProfile.QUALITY_480P);
             } else {
-                profile = CamcorderProfile.get(mCameraId, CamcorderProfile.QUALITY_LOW);
             }
 
-            Camera.Size sevenTwentyP = CameraHelper.getSevenTwentyP((Activity) this.getContext(), cameraParameters);
-            StringBuilder sb = new StringBuilder("Camera Dimensions: w ");
-            sb.append(sevenTwentyP.width);
-            sb.append(" h ");
-            sb.append(sevenTwentyP.height);
+            //Camera.Size sevenTwentyP = CameraHelper.getSevenTwentyP((Activity) this.getContext(), cameraParameters);
+            //StringBuilder sb = new StringBuilder("Camera Dimensions: w ");
+            //sb.append(sevenTwentyP.width);
+            //sb.append(" h ");
+            //sb.append(sevenTwentyP.height);
 
-            Log.d(TAG, sb.toString());
-            profile.videoFrameWidth = sevenTwentyP.width;
-            profile.videoFrameHeight = sevenTwentyP.height;
+            //Log.d(TAG, sb.toString());
+            //profile.videoFrameWidth = sevenTwentyP.width;
+            //profile.videoFrameHeight = sevenTwentyP.height;
+            profile.videoFrameWidth = 540;
+            profile.videoFrameHeight = 960;
+            profile.videoFrameRate = 24;
+            profile.videoBitRate = 2000000;
+
+
+            profile.audioChannels = 1;
+            profile.audioBitrate = 192000;
+            profile.audioSampleRate = 48000;
+
 
             mRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
             if (mRecordAudio) {
                 // With audio
                 mRecorder.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
                 mRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
+                
                 mRecorder.setVideoFrameRate(profile.videoFrameRate);
                 mRecorder.setVideoSize(profile.videoFrameWidth, profile.videoFrameHeight);
                 mRecorder.setVideoEncodingBitRate(profile.videoBitRate);
+                
                 mRecorder.setAudioEncodingBitRate(profile.audioBitRate);
                 mRecorder.setAudioChannels(profile.audioChannels);
                 mRecorder.setAudioSamplingRate(profile.audioSampleRate);
+
                 mRecorder.setVideoEncoder(profile.videoCodec);
                 mRecorder.setAudioEncoder(profile.audioCodec);
             } else {
