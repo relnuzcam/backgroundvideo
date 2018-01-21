@@ -114,7 +114,7 @@ public class VideoOverlay extends ViewGroup implements TextureView.SurfaceTextur
 
 
             profile.audioChannels = 1;
-            profile.audioBitrate = 192000;
+            profile.audioBitRate = 192000;
             profile.audioSampleRate = 48000;
 
 
