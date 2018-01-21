@@ -108,8 +108,8 @@ public class VideoOverlay extends ViewGroup implements TextureView.SurfaceTextur
             //Log.d(TAG, sb.toString());
             //profile.videoFrameWidth = sevenTwentyP.width;
             //profile.videoFrameHeight = sevenTwentyP.height;
-            profile.videoFrameWidth = 480;
-            profile.videoFrameHeight = 720;
+            profile.videoFrameWidth = 720;
+            profile.videoFrameHeight = 480;
             profile.videoFrameRate = 24;
             profile.videoBitRate = 2000000;
 
