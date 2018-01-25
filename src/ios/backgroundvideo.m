@@ -52,7 +52,7 @@
 
     //Capture session
     session = [[AVCaptureSession alloc] init];
-    [session setSessionPreset:AVCaptureSessionPresetMedium];
+    [session setSessionPreset:AVCaptureSessionPreset960x540];
 
     //Get the front camera and set the capture device
     AVCaptureDevice *inputDevice = [self getCamera: self.camera];
@@ -67,17 +67,9 @@
 
     output = [[AVCaptureMovieFileOutput alloc]init];
     output.maxRecordedDuration = maxDuration;
-    [output setOutputSettings: [AVVideoCodecKey:AVVideoCodecH264, 
-        AVVideoWidthKey: 720, 
-        AVVideoHeightKey:480, 
-        AVVideoCompressionPropertiesKey:[AVVideoAverageBitrateKey:2000000],
-        AVEncoderBitRateKey: 192000,
-        AVNumberOfChannelsKey:1,
-        AVSampleRateKey:48000.0f]]
 
 
-    if ( [session canAddOutput:output])
-        [session addOutput:output];
+    
 
     if(shouldRecordAudio){
         
@@ -85,18 +77,23 @@
         AVCaptureDevice *audioCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
         AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioCaptureDevice error:nil];
 
-        if ([session canAddInput:audioInput])
+        if ([session canAddInput:audioInput]){
             [session addInput:audioInput];
+            
+            [output setOutputSettings:@{AVEncoderBitRateKey: @192000, AVNumberOfChannelsKey:@1, AVSampleRateKey:@48000.0f} forConnection:audioInput];
+        }
     
     }
-
 
     //Capture device input
     AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:inputDevice error:nil];
     if ( [session canAddInput:deviceInput] )
         [session addInput:deviceInput];
 
-
+    [output setOutputSettings: @{AVVideoCodecKey:AVVideoCodecH264, AVVideoWidthKey: @720, AVVideoHeightKey:@480, AVVideoCompressionPropertiesKey:@{AVVideoAverageBitRateKey:@2000000}} forConnection: deviceInput];
+    
+    if ( [session canAddOutput:output])
+        [session addOutput:output];
     //preview view
     self.previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:session];
     [self.previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
