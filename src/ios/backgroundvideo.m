@@ -67,6 +67,13 @@
 
     output = [[AVCaptureMovieFileOutput alloc]init];
     output.maxRecordedDuration = maxDuration;
+    [output setOutputSettings: [AVVideoCodecKey:AVVideoCodecH264, 
+        AVVideoWidthKey: 720, 
+        AVVideoHeightKey:480, 
+        AVVideoCompressionPropertiesKey:[AVVideoAverageBitrateKey:2000000],
+        AVEncoderBitRateKey: 192000,
+        AVNumberOfChannelsKey:1,
+        AVSampleRateKey:48000.0f]]
 
 
     if ( [session canAddOutput:output])
